@@ -5,15 +5,19 @@ public:
         if (low <= high) {
             long mid = (low + high) / 2;
 
-            if(arr[mid] == target)
+            if(arr[mid] == target) {
                 return mid;
-            else if(arr[mid] > target)
+            }
+            else if(arr[mid] > target) {
                 return binary_search(arr, target, low, (mid-1));
-            else
+            }
+            else {
                 return binary_search(arr, target, (mid+1), high);   
+            }
         }
-        else
+        else {
             return -1;
+        }
     }
     
     
