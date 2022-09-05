@@ -4,4 +4,4 @@ In mathematics and computer science, an algorithm is defined as a process or set
 
 Solved in C++
 
-All Question of LeetCode Alogorithm 1 : https://leetcode.com/study-plan/algorithm/
+All Question of LeetCode Algorithm 1 : https://leetcode.com/study-plan/algorithm/
