@@ -5,9 +5,10 @@ public:
     }
     
     vector<int> sortedSquares(vector<int>& nums) {
-        vector<int> rslt;
-        int neg = -1, pos = -1;
         int len = nums.size() - 1;
+        vector<int> rslt(nums.size());
+        int itr = 0;
+        int neg = -1, pos = -1;
         
         for (int i = 0; i <= len; i++) {
             if (nums[i] >= 0 ) {
@@ -23,18 +24,18 @@ public:
         
         while ((neg >= 0) && (pos <= len) && (pos != -1)) {
             if(abs(nums[neg]) > nums[pos]){
-                rslt.push_back(square(nums[pos++]));
+                rslt[itr++] = square(nums[pos++]);
             } else {
-                rslt.push_back(square(nums[neg--]));
+                rslt[itr++] = square(nums[neg--]);
             }
         }
         
         while (neg >= 0){
-            rslt.push_back(square(nums[neg--]));
+            rslt[itr++] = square(nums[neg--]);
         }
         
         while (pos <= len && pos != -1) {
-            rslt.push_back(square(nums[pos++]));
+            rslt[itr++] = square(nums[pos++]);
         }
         
         return rslt;
