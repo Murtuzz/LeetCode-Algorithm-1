@@ -1,19 +1,16 @@
 class Solution {
 public:
     int lengthOfLongestSubstring(string s) {
-        vector<int> arr(256,-1);
-        int len = s.size();
-        int starting_point = 0;
-        int longSubStr = 0;
-        
-        for (int i = 0; i < len; i++ ) {
-            if (arr[s[i]] >= starting_point) {
-                starting_point = arr[s[i]]+1;
+        vector<int>chrIndexArr(256,-1);
+        int maxWRS = 0;
+        int start_index = 0;
+        for ( int i = 0; i < s.size(); i++) {
+            if ( chrIndexArr[s[i]] >= start_index) {
+                start_index = chrIndexArr[s[i]] + 1;
             }
-            longSubStr = max( ((i + 1) - starting_point), longSubStr);
-            arr[s[i]] = i;
+            maxWRS = max(maxWRS, (i - start_index) + 1 );
+            chrIndexArr[s[i]] = i;        
         }
-        
-        return longSubStr;
+        return maxWRS;
     }
 };
