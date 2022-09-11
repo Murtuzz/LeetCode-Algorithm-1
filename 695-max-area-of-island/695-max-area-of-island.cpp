@@ -1,33 +1,36 @@
 class Solution {
-public:
-    void getAreaCount(vector<vector<int>>& grid, int i, int j, vector<vector<bool>>& visited, int& count) {
-        int rowLen = grid.size();
-        int colLen = grid[0].size();
-        if (i < 0 || j < 0 || i == rowLen || j == colLen || !grid[i][j] || visited[i][j]) {
+    int visited[51][51];
+    int max;
+    int count;
+    void findMaxArea(vector<vector<int>>& grid, int x, int y){
+           if(x > -1 && y > -1 && x < grid.size() && y < grid[0].size() && !visited[x][y]){
+               visited[x][y] = 1;
+               if(grid[x][y]==1){
+                    this->count++;
+                findMaxArea(grid,x+1,y);
+                findMaxArea(grid,x-1,y);
+                findMaxArea(grid,x,y+1);
+                findMaxArea(grid,x,y-1);
+               }
             return;
-        }
-        visited[i][j] = true;
-        count++;
-        getAreaCount(grid, i+1, j, visited, count);
-        getAreaCount(grid, i-1, j, visited, count);
-        getAreaCount(grid, i, j+1, visited, count);
-        getAreaCount(grid, i, j-1, visited, count);
+           }
+        return;
     }
     
+public:
     int maxAreaOfIsland(vector<vector<int>>& grid) {
-        int rowLen = grid.size();
-        int colLen = grid[0].size();
-        int maxArea = 0;
-        vector<vector<bool>>visited (rowLen, vector<bool>(colLen, false));
-        for ( int i = 0; i < rowLen; i++) {
-            for ( int j = 0; j < colLen; j++) {
-                if (grid[i][j] == 1) {
-                    int count = 0;
-                    getAreaCount(grid, i, j, visited, count);
-                    maxArea = max(count, maxArea);
+        this->max = 0;
+        for(int i = 0; i < grid.size(); i++){
+            for(int j = 0; j < grid[i].size(); j++){
+                if(grid[i][j]){
+                    this->count = 0;
+                    findMaxArea(grid,i,j);
+                    if(this->count > this->max){
+                        this->max = this->count;
+                    }
                 }
             }
         }
-        return maxArea;
+        return this->max;
     }
 };
