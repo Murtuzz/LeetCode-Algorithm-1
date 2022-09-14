@@ -45,11 +45,7 @@ public:
             list1 = list2;
         }
         
-        while (list1) {
-            headClone->next = new ListNode(list1->val);
-            list1 = list1->next;
-            headClone = headClone->next;
-        }
+        headClone->next = list1;
         return head;
     }
 };
