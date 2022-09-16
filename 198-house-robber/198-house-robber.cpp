@@ -5,12 +5,14 @@ public:
         if (size == 1) {
             return nums[0];
         }
-        vector <int> mem(size + 1, 0);
-        mem[0] = nums[0];
-        mem[1] = max(nums[1], mem[0]);
+        int first = nums[0];
+        int second = max(nums[1], first);
+        int current = second;
         for (int i = 2; i < size; i++) {
-            mem[i] = max(mem[i - 2] + nums[i], mem[i - 1]);          
+            current = max(first + nums[i], second);
+            first = second;
+            second = current;
         }
-        return mem[size - 1];
+        return current;
     }
 };
