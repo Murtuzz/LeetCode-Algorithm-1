@@ -14,6 +14,9 @@ public:
             store[changed[i]]++;
         }
         
+        if ((changed[0] == 0 && store[0] & 1) || changed[len - 1] & 1) {
+            return {};
+        }
         vector<int> original;
         for ( int i = 0; i < len; i++) {
             if (store[changed[i]] && store[changed[i] * 2]) {
