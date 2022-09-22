@@ -1,18 +1,21 @@
 class Solution {
 public:
     int rob(vector<int>& nums) {
-        int size = nums.size();
-        if (size == 1) {
-            return nums[0];
+        int first =  nums[0];
+        int len = nums.size();
+        if (len == 1) {
+            return first;
         }
-        int first = nums[0];
-        int second = max(nums[1], first);
-        int current = second;
-        for (int i = 2; i < size; i++) {
-            current = max(first + nums[i], second);
+        
+        int second = max(first, nums[1]);
+        int maxMoney = second;
+        
+        for (int i = 2; i < len; i++) {
+            maxMoney = max(second, first + nums[i]);
             first = second;
-            second = current;
+            second = maxMoney;
         }
-        return current;
+        
+        return maxMoney;
     }
 };
