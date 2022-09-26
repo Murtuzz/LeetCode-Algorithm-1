@@ -1,1 +1,1 @@
-​
+It can also be done by checking 0 from the end and counting steps
