@@ -1,0 +1,1 @@
+Applying 2 method as one for directly finding it using Kadane and another if the sub array is  in circular way, then we will be improvise it, and will find minimum array sum and subtract it.
