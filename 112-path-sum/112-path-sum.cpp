@@ -12,7 +12,7 @@
 class Solution {
 public:
     void traversal (TreeNode* root, int targetSum, int sum, bool &flag) {
-        if (root == nullptr || flag) {
+        if (root == nullptr) {
             return;
         }
         sum += root->val;
