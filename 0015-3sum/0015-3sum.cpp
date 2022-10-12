@@ -9,7 +9,11 @@ public:
             while (j < k) {
                 int sum = nums[i] + nums[j] + nums[k];
                 if (!sum) {
-                    ans.insert({nums[i], nums[j], nums[k]});
+                    vector<int> temp;
+                    temp.push_back(nums[i]);
+                    temp.push_back(nums[j]);
+                    temp.push_back(nums[k]);
+                    ans.insert(temp);
                     j++, k--;
                 } else if (sum > 0) {
                     k--;
