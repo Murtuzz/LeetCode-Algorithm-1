@@ -4,15 +4,17 @@ public:
         set<vector<int>> ans;
         sort (nums.begin(), nums.end());
         int len = nums.size();
-        for (int i = 0; i < len - 2; i++ ) {
-            int j = i + 1, k = len - 1;
+        int i, j, k;
+        int sum;
+        vector<int> temp(3);
+        for (i = 0; i < len - 2; i++ ) {
+            j = i + 1, k = len - 1;
             while (j < k) {
-                int sum = nums[i] + nums[j] + nums[k];
-                if (!sum) {
-                    vector<int> temp;
-                    temp.push_back(nums[i]);
-                    temp.push_back(nums[j]);
-                    temp.push_back(nums[k]);
+                sum = nums[i] + nums[j] + nums[k];
+                if (sum == 0) {
+                    temp[0] = nums[i];
+                    temp[1] = nums[j];
+                    temp[2] = nums[k];
                     ans.insert(temp);
                     j++, k--;
                 } else if (sum > 0) {
@@ -22,8 +24,10 @@ public:
                 }
             }
         }
-        vector <vector<int>> rst;
-        for (auto a : ans) rst.push_back(a);
+        vector<vector<int>> rst;
+        for (auto x : ans) {
+            rst.push_back(x);
+        }
         return rst;
     }
 };
