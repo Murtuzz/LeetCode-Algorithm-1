@@ -1,5 +1,6 @@
 class Solution {
 public:
+    
     int m_b_s_r (vector<vector<int>>& matrix, int &target, int low, int high) {
         if (low <= high) {
             int mid = (low + high) / 2;
