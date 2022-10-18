@@ -7,13 +7,10 @@ public:
         int m = secondList.size();
         vector<vector<int>>ans;
         vector<int> set(2);
+        
         while(i < n && j < m) {
-            int first_low = firstList[i][0];
-            int first_high = firstList[i][1];
-            int second_low = secondList[j][0];
-            int second_high = secondList[j][1];
-            int low = max(first_low,second_low);
-            int high = min(first_high,second_high);
+            int low = max(firstList[i][0], secondList[j][0]);
+            int high = min(firstList[i][1], secondList[j][1]);
 
             if(low <= high) {
                 set[0] = low;
@@ -21,7 +18,7 @@ public:
                 ans.push_back(set);
             }
             
-            if(first_high < second_high) i++;
+            if(firstList[i][1] < secondList[j][1]) i++;
             else j++;
         }
         return ans;
